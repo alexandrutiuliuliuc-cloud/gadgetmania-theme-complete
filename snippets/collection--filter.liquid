@@ -1,0 +1,316 @@
+{%- liquid
+  assign apply_t = 'collections.apply' | t
+  assign collection_t = 'collections.collection' | t
+  assign no_filters_t = 'collections.no_filters' | t
+  assign reset_t = 'collections.reset' | t
+  assign search_text_t = 'collections.search_by_name' | t
+  assign sort_by_t = 'collections.sort_by' | t
+
+  if custom_collection_list == blank
+    assign collections_list = collections
+  else
+    assign collections_list = linklists[custom_collection_list].links
+  endif
+-%}
+
+<div class="collection--filter--root">
+  <div class="collection--filter--wrapper">
+
+    {% if show_collection_list or show_sort_list or show_refine_list %}
+      <form class="collection--filter--form">
+
+        {% if show_collection_list %}
+          <div class="collection--filter--category">
+            <div
+              class="collection--filter--toggle"
+              tabindex="0"
+              data-item="nav-text"
+              aria-expanded="false"
+              aria-controls="browse-filter"
+            >
+              {{ collection_t }}
+              {% render 'icons', icon: 'chevron-up' %}
+              {% render 'icons', icon: 'chevron-down' %}
+            </div>
+
+            <ul
+              class="collection--filter--menu"
+              id="browse-filter"
+              data-item="nav-text--sub"
+              data-transition="fade-out"
+            >
+              {%- for collection_item in collections_list -%}
+                <li
+                  class="collection--filter--browse-link"
+                  tabindex="0"
+                  data-value="{{ collection_item.url }}"
+                  {% if collection_item.url == collection.url %}
+                    data-active="true"
+                  {% else %}
+                    data-active="false"
+                  {% endif %}
+                >
+                  {{- collection_item.title -}}
+                  {%- render 'icons', icon: 'cross' -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {% endif %}
+
+        {% if show_sort_list %}
+          <div class="collection--filter--category">
+            <div
+              class="collection--filter--toggle"
+              tabindex="0"
+              data-item="nav-text"
+              aria-expanded="false"
+              aria-controls="sort-filter"
+            >
+              {{ sort_by_t }}
+              {% render 'icons', icon: 'chevron-up' %}
+              {% render 'icons', icon: 'chevron-down' %}
+            </div>
+
+            <ul
+              class="collection--filter--menu"
+              id="sort-filter"
+              data-transition="fade-out"
+              role="radiogroup"
+            >
+              {%- for option in collection.sort_options -%}
+                <li class="collection--filter--sort-link">
+                  <input
+                    id="collection--filter--{{ option.name | handle | downcase }}"
+                    class="collection--filter--sort-input"
+                    type="radio"
+                    name="sort_by"
+                    value="{{ option.value }}"
+                    data-label="{{ option.name }}"
+                    tabindex="-1"
+                    {% if option.value == collection.sort_by %}
+                      checked
+                    {% endif %}
+                  >
+                  <label
+                    class="collection--filter--sort-label"
+                    for="collection--filter--{{ option.name | handle | downcase }}"
+                    data-item="nav-text--sub"
+                    tabindex="0"
+                  >
+                    {{- option.name -}}
+                    {%- render 'icons', icon: 'cross' -%}
+                  </label>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        {% if show_refine_list %}
+          {% if collection.filters.size > 0 %}
+            {% for filter in collection.filters %}
+              <div class="collection--filter--category">
+                <div
+                  class="collection--filter--toggle"
+                  tabindex="0"
+                  data-item="nav-text"
+                  aria-expanded="false"
+                  aria-controls="{{ filter.label | handle | downcase }}-refine-filter"
+                >
+                  {{ filter.label }}
+                  {% render 'icons', icon: 'chevron-up' %}
+                  {% render 'icons', icon: 'chevron-down' %}
+                </div>
+
+                {% if filter.type == 'price_range' %}
+                  <div
+                    class="collection--filter--menu"
+                    data-item="nav-text--sub"
+                    id="{{ filter.label | handle | downcase }}-refine-filter"
+                    data-transition="fade-out"
+                  >
+                    <div class="collection--filter--price-heading">
+                      {%- liquid
+                        assign max_price_amount = filter.range_max | money | strip_html | escape
+                        assign max_price_t = 'collections.max_price' | t: price: max_price_amount
+                        assign from_t = 'collections.from' | t
+                        assign to_t = 'collections.to' | t
+
+                        assign min_value = filter.min_value.value | money_without_currency
+                        assign max_value = filter.max_value.value | money_without_currency
+                        assign range_max = filter.range_max | money_without_currency
+
+                        assign currencies_using_comma_decimals = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND' | split: ','
+                        assign uses_comma_decimals = false
+                        if currencies_using_comma_decimals contains cart.currency.iso_code
+                          assign uses_comma_decimals = true
+                        endif
+                      -%}
+
+                      <span class="collection--filter--price-max" data-item="small-text">
+                        {{- max_price_t -}}
+                      </span>
+                      <div
+                        class="collection--filter--price-remove"
+                        data-item="block-link"
+                        tabindex="0"
+                      >
+                        <div>{{ reset_t }}</div>
+                      </div>
+                    </div>
+                    <div class="collection--filter--price-container">
+                      <div class="collection--filter--price-field">
+                        <span class="collection--filter--price-currency">
+                          {{- cart.currency.symbol -}}
+                        </span>
+                        <input
+                          class="collection--filter--price-input"
+                          name="{{ filter.min_value.param_name }}"
+                          id="collection--filter--{{ filter.label | downcase }}-min"
+                          {%- if filter.min_value.value and uses_comma_decimals -%}
+                            value="{{ min_value | replace: '.', '' | replace: ',', '.' }}"
+                            data-empty="false"
+                          {%- elsif filter.min_value.value -%}
+                            value="{{ min_value | replace: ',', '' }}"
+                            data-empty="false"
+                          {%- else -%}
+                            data-empty="true"
+                          {%- endif -%}
+                          type="number"
+                          pattern="[0-9]*"
+                          min="0"
+                          {% if uses_comma_decimals %}
+                            max="{{ range_max | replace: '.', '' }}"
+                          {% else %}
+                            max="{{ range_max | replace: ',', '' }}"
+                          {% endif %}
+                          data-min-price
+                        >
+                        <label
+                          class="collection--filter--price-label"
+                          for="collection--filter--{{ filter.label | downcase }}-min">
+                            {{ from_t }}
+                        </label>
+                      </div>
+                      <div class="collection--filter--price-field">
+                        <span class="collection--filter--price-currency">
+                          {{ cart.currency.symbol }}
+                        </span>
+                        <input
+                          class="collection--filter--price-input"
+                          name="{{ filter.max_value.param_name }}"
+                          id="collection--filter--{{ filter.label | downcase }}-max"
+                          {%- if filter.max_value.value and uses_comma_decimals -%}
+                            value="{{ max_value | replace: '.', '' | replace: ',', '.' }}"
+                            data-empty="false"
+                          {%- elsif filter.max_value.value -%}
+                            value="{{ max_value | replace: ',', '' }}"
+                            data-empty="false"
+                          {%- else -%}
+                            data-empty="true"
+                          {%- endif -%}
+                          type="number"
+                          pattern="[0-9]*"
+                          min="0"
+                          {% if uses_comma_decimals %}
+                            max="{{ range_max | replace: '.', '' }}"
+                          {% else %}
+                            max="{{ range_max | replace: ',', '' }}"
+                          {% endif %}
+                          data-empty="true"
+                          data-max-price
+                        >
+                        <label
+                          class="collection--filter--price-label"
+                          for="collection--filter--{{ filter.label | downcase }}-max"
+                        >
+                          {{ to_t }}
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                {% else %}
+                  <ul
+                    class="collection--filter--menu"
+                    id="{{ filter.label | handle | downcase }}-refine-filter"
+                    data-transition="fade-out"
+                  >
+                    {% for filter_value in filter.values %}
+                      <li class="collection--filter--refine-link">
+                        <input
+                          id="collection--filter--{{ filter.label | handle | downcase }}-{{ filter_value.label | handle | downcase }}"
+                          class="collection--filter--refine-input"
+                          type="checkbox"
+                          name="{{ filter_value.param_name }}"
+                          value="{{ filter_value.value }}"
+                          data-label="{{ filter_value.label }}"
+                          tabindex="-1"
+                          {% if filter_value.active %}
+                            checked
+                          {% endif %}
+                        >
+                        <label
+                          class="collection--filter--refine-label"
+                          for="collection--filter--{{ filter.label | handle | downcase }}-{{ filter_value.label | handle | downcase }}"
+                          data-item="nav-text--sub"
+                          tabindex="0"
+                        >
+                          {{ filter_value.label }}
+                          {%- render 'icons', icon: 'cross' -%}
+                        </label>
+                      </li>
+                    {% endfor %}
+                  </ul>
+
+                {% endif %}
+              </div>
+            {% endfor %}
+
+          {% else %}
+            <div class="collection--filter--no-filters" data-item="caption">
+              {{ no_filters_t }}
+            </div>
+
+          {% endif %}
+        {% endif %}
+
+      </form>
+    {% endif %}
+
+    {% if show_search_link %}
+      <div class="collection--filter--search">
+        <a
+          class="collection--filter--search-link"
+          href="{{ routes.search_url }}"
+          aria-label="{{ search_text_t }}"
+          aria-haspopup="true"
+        >
+          <div class="collection--filter--search-icon">
+            {% render 'icons', icon: 'search' %}
+          </div>
+
+          <div class="collection--filter--search-text" data-item="nav-text--sub">
+            {{ search_text_t }}
+          </div>
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+
+  <div class="collection--filter--button-container">
+    <div
+      class="collection--filter--apply"
+      data-item="button"
+      data-off-canvas--close
+      tabindex="0"
+    >
+      <span>{{ apply_t }}</span>
+    </div>
+    <div class="collection--filter--reset" data-item="secondary-button" tabindex="0">
+      <span>{{ reset_t }}</span>
+    </div>
+  </div>
+</div>

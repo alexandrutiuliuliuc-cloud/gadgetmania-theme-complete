@@ -1,0 +1,44 @@
+{% if callback_enabled and has_only_one_variant == false %}
+  <script>
+    function selectCallback(variant) {
+      theme.partials.Product.variantSelected(variant);
+      // add your selectCallback code here...
+    };
+  </script>
+{% endif %}
+
+{% if load_model %}
+  {% assign product_models = product_media | where: 'media_type', 'model' %}
+  {% assign models_json = product_models | json %}
+
+  <script>
+    window.ShopifyXR = window.ShopifyXR || function() {
+      (ShopifyXR.q = ShopifyXR.q || []).push(arguments)
+    }
+
+    ShopifyXR('addModels', {{ models_json }});
+  </script>
+{% endif %}
+
+{% if load_youtube %}
+  <script>
+    // YouTube callback
+    if (typeof onYouTubeIframeAPIReady != 'function') {
+      function onYouTubeIframeAPIReady() {
+        const yt_ready_event = new Event('theme:utils:youtubeAPIReady');
+        window.dispatchEvent(yt_ready_event);
+      }
+    }
+  </script>
+{% endif %}
+
+{% if load_collapsible_tab %}
+  <script>
+    if (theme.scripts.collapsible_tab == false) {
+      script = document.createElement('script');
+      script.src = "{{ 'collapsible-tab.js' | asset_url }}";
+      document.body.appendChild(script);
+      theme.scripts.collapsible_tab = true;
+    }
+  </script>
+{% endif %}

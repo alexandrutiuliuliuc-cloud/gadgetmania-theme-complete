@@ -1,0 +1,406 @@
+{%- liquid
+  assign product_media_t = 'products.product_media' | t
+  assign image_modal_t = 'products.image_modal' | t
+
+  assign current_variant = product.selected_or_first_available_variant
+  assign featured_media = current_variant.featured_media | default: product.featured_media
+  assign hide_variant_media = section.settings.hide-variant-media
+  assign load_collapsible_tab = false
+  assign modal_enabled = section.settings.modal-enabled
+  assign load_model = false
+  assign show_vendor = section.settings.vendor-name-show
+  assign video_looping_enabled = section.settings.loop-enabled
+  assign load_youtube = false
+
+  capture variant_media_ids
+    for variant in product.variants
+      echo '"' | append: variant.featured_media.id | append: '",'
+    endfor
+  endcapture
+  assign variant_media_ids = variant_media_ids | split: ','
+-%}
+
+{% for media in product.media %}
+  {%- liquid
+    if media.media_type == "model"
+      assign load_model = true
+    elsif media.media_type == "external_video"
+      assign load_youtube = true
+    endif
+  -%}
+
+  {% if modal_enabled %}
+    {%- capture modal_media -%}
+      {{ modal_media }}
+
+      {% if media.media_type == "image" %}
+        <div class="modal--content">
+          <div class="product-page--modal-image" data-id="{{ media.id }}">
+            {% render 'image', image: media %}
+          </div>
+        </div>
+      {% endif %}
+    {%- endcapture -%}
+  {% endif %}
+
+  {%- capture variant_media -%}
+    {%- liquid
+      echo variant_media
+
+      if media == featured_media
+        continue
+      endif
+
+      capture media_id
+        echo '"' | append: media.id | append: '"'
+      endcapture
+    -%}
+
+    {% if hide_variant_media and variant_media_ids contains media_id %}
+      <a class="product-page--hidden-variant" aria-label="{{ product_media_t }}">
+        {%
+          render "product--media",
+          media_view: "featured",
+          product_media: media,
+          inside_carousel: false,
+          video_looping_enabled: video_looping_enabled
+        %}
+      </a>
+
+      {% continue %}
+    {% endif %}
+
+    <div class="product-page--media-variant">
+      {% if modal_enabled and media.media_type == 'image' %}
+        <a class="modal--link" tabindex="0" aria-label="{{ product_media_t }}">
+      {% endif %}
+
+      {%
+        render "product--media",
+        media_view: "featured",
+        product_media: media,
+        inside_carousel: false,
+        video_looping_enabled: video_looping_enabled
+      %}
+
+      {% if modal_enabled and media.media_type == 'image' %}
+        </a>
+      {% endif %}
+    </div>
+  {%- endcapture -%}
+{% endfor %}
+
+<div
+  class="product-page--root"
+  data-section-id="{{ section.id }}"
+  data-section-type="product_page"
+  data-js-class="Product"
+>
+  {% if modal_enabled %}
+    <div
+      class="modal--root"
+      data-js-class="CoreModal"
+      data-modal-view="product-media"
+    >
+  {% endif %}
+
+  <div class="product-page--top-panel">
+    <div class="product-page--panel-wrapper">
+
+      <div class="product-page--featured-media">
+        {% if modal_enabled and featured_media.media_type == 'image' %}
+          <a class="modal--link" href="#" aria-label="{{ image_modal_t }}">
+        {% endif %}
+
+        {%
+          render "product--media",
+          media_view: "featured",
+          inside_carousel: false,
+          product_media: featured_media,
+          video_looping_enabled: video_looping_enabled
+        %}
+
+        {% if modal_enabled and featured_media.media_type == 'image' %}
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="product-page--form-container">
+        <div class="product-page--header">
+          <a class="product-page--heading" href="{{ product.url }}">
+            <h1 data-item="section-heading">
+              {{ product.title }}
+            </h1>
+          </a>
+
+          {% if show_vendor %}
+            <div class="product-page--vendor" data-item="accent-text">
+              <a
+                href="{{ product.vendor | url_for_vendor }}"
+                itemprop="brand"
+                content="{{ product.vendor }}"
+              >
+                {{ product.vendor }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="product-page--blocks">
+          {%- for block in section.blocks -%}
+            <div
+              class="product-page--block"
+              data-block-type="{{ block.type }}"
+              {{ block.shopify_attributes }}
+            >
+              {%- case block.type -%}
+                {%- when 'collapsible-tab' -%}
+                  {%- liquid
+                    assign load_collapsible_tab = true
+                    render 'collapsible-tab', block: block
+                  -%}
+
+                {%- when 'form' -%}
+                  {%
+                    render "product--form",
+                    product: product,
+                    low_stock_amount: block.settings.low-in-stock-amount,
+                    pickup_enabled: block.settings.pickup-enabled,
+                    show_quantity: block.settings.quantity-show,
+                    show_unavailable_form: block.settings.sold-out-form-show,
+                    size_chart_enabled: block.settings.size-chart-enabled,
+                    size_chart_content: block.settings.size-chart-content,
+                    size_chart_option: block.settings.size-chart-option,
+                    smart_payment_enabled: block.settings.smart-payment-enabled,
+                    swatches_enabled: block.settings.swatches-enabled,
+                    variant_style: block.settings.variant-style
+                  %}
+
+                {%- when 'rating' -%}
+                  {%- render 'product-rating' -%}
+
+                {%- when 'liquid' -%}
+                  {{- block.settings.custom-liquid -}}
+
+                {%- when '@app' -%}
+                  {%- render block -%}
+
+              {%- endcase -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="product-page--content">
+    <div class="product-page--column-container">
+      <div class="product-page--column-left"></div>
+      <div class="product-page--column-right"></div>
+    </div>
+
+    <div class="product-page--single-column">
+      <div
+        class="product-page--description"
+        data-item="rte-content"
+        itemprop="description"
+      >
+        {{ product.description }}
+      </div>
+
+      {{ variant_media }}
+    </div>
+  </div>
+
+      <!-- Sezione custom per la descrizione e video del prodotto -->
+      {% render 'product-custom' %}
+
+
+
+      
+  {% if modal_enabled %}
+      <div class="product-page--modal-wrapper">
+        {{ modal_media }}
+      </div>
+
+    </div>
+  {% endif %}
+</div>
+
+{%
+  render "product--scripts",
+  product_media: product.media,
+  callback_enabled: true,
+  has_only_one_variant: product.has_only_default_variant,
+  load_model: load_model,
+  load_youtube: load_youtube,
+  load_collapsible_tab: load_collapsible_tab
+%}
+
+{% schema %}
+{
+  "name": "Product page",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "vendor-name-show",
+      "label": "Show vendor name",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "paragraph",
+      "content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)."
+    },
+    {
+      "type": "checkbox",
+      "id": "modal-enabled",
+      "label": "Enable modal popup",
+      "default": true,
+      "info": "Opens when clicking a product image"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide-variant-media",
+      "label": "Hide variant media",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop-enabled",
+      "label": "Enable video looping",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "form",
+      "name": "Product form",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "variant-style",
+          "label": "Product variant style",
+          "options": [
+            { "label": "Dropdowns", "value": "dropdowns" },
+            { "label": "Buttons", "value": "buttons" }
+          ],
+          "default": "dropdowns"
+        },
+        {
+          "type": "checkbox",
+          "id": "swatches-enabled",
+          "label": "Enable color swatches",
+          "default": false,
+          "info": "Automatically turn color options into swatches."
+        },
+        {
+          "type": "checkbox",
+          "id": "smart-payment-enabled",
+          "label": "Show dynamic checkout button",
+          "info": "Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "sold-out-form-show",
+          "label": "Show notification form when product is sold out"
+        },
+        {
+          "label": "Show low in stock notice when quantity is",
+          "id": "low-in-stock-amount",
+          "type": "range",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "default": 5,
+          "info": "Set to 0 to disable this feature. Updated for each variant."
+        },
+        {
+          "type": "checkbox",
+          "id": "quantity-show",
+          "label": "Show quantity selector",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "pickup-enabled",
+          "label": "Enable product pickup",
+          "default": true,
+          "info": "Learn more about [local pickup](https://help.shopify.com/en/manual/sell-in-person/pos-classic/shopify-pos-from-admin/buy-online-pickup-in-store)."
+        },
+        {
+          "type": "header",
+          "content": "Size chart"
+        },
+        {
+          "type": "checkbox",
+          "id": "size-chart-enabled",
+          "label": "Enable",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "size-chart-option",
+          "label": "Link from option",
+          "default": "size"
+        },
+        {
+          "type": "page",
+          "id": "size-chart-content",
+          "label": "Page content"
+        }
+      ]
+    },
+    {
+      "type": "collapsible-tab",
+      "name": "Collapsible tab",
+      "settings": [
+        {
+          "id": "heading",
+          "label": "Heading",
+          "type": "text",
+          "default": "Collapsible tab"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Text",
+          "default": "<p>Place collapsible tab content here.</p>"
+        },
+        {
+          "type": "page",
+          "id": "page-content",
+          "label": "Tab content from page"
+        }
+      ]
+    },
+    {
+      "type": "rating",
+      "name": "Product rating",
+      "limit": 1
+    },
+    {
+      "type": "liquid",
+      "name": "Custom liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom-liquid",
+          "label": "Custom Liquid",
+          "info": "Add app snippets or other Liquid code to create advanced customizations."
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

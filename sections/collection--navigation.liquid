@@ -1,0 +1,249 @@
+{%- liquid
+  assign browse_t = 'collections.browse' | t
+  assign clear_all_t = 'collections.clear_all' | t
+  assign large_layout_t = 'collections.large_layout' | t
+  assign refine_t = 'collections.refine' | t
+  assign small_layout_t = 'collections.small_layout' | t
+  assign sort_by_t = 'collections.sort_by' | t
+
+  assign custom_collection_list = section.settings.custom-collection-list
+  assign show_browse_button = section.settings.show-browse-button
+  assign show_collection_list = section.settings.show-collections-list
+  assign show_layout_buttons = section.settings.show-layout-buttons
+  assign show_search_link = section.settings.show-search-link
+  assign show_sort_button = section.settings.show-sort-button
+  assign show_sort_list = section.settings.show-sort-list
+  assign show_refine_button = section.settings.show-refine-button
+  assign show_refine_list = section.settings.show-refine-list
+
+  assign show_filter = false
+  if show_browse_button or show_refine_button or show_sort_button
+    assign show_filter = true
+  endif
+-%}
+
+<div
+  class="collection--navigation--root"
+  data-section-id="{{ section.id }}"
+  data-show-navigation="{% if show_filter or show_layout_buttons %}true{% else %}false{% endif %}"
+>
+  {% if show_filter or show_layout_buttons %}
+    <div class="collection--navigation" data-container="block" data-mq="medium-large">
+
+      {% if show_filter %}
+        <div class="collection--navigation--filter" data-item="nav-text">
+          {% if show_browse_button %}
+            <div
+              class="collection--navigation--button"
+              tabindex="0"
+              data-off-canvas--open="right-sidebar"
+              data-off-canvas--view="collection-filter"
+              data-toggle-menu="browse-filter"
+              aria-haspopup="menu"
+            >
+              {{ browse_t }}
+            </div>
+          {% endif %}
+          {% if show_sort_button %}
+            <div
+              class="collection--navigation--button"
+              tabindex="0"
+              data-off-canvas--open="right-sidebar"
+              data-off-canvas--view="collection-filter"
+              data-toggle-menu="sort-filter"
+              aria-haspopup="menu"
+            >
+              {{ sort_by_t }}
+            </div>
+          {% endif %}
+          {% if show_refine_button %}
+            <div
+              class="collection--navigation--button"
+              tabindex="0"
+              data-off-canvas--open="right-sidebar"
+              data-off-canvas--view="collection-filter"
+              data-toggle-menu="refine-filter"
+              aria-haspopup="menu"
+            >
+              {{ refine_t }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if show_layout_buttons %}
+        <div class="collection--navigation--layout">
+          <div
+            class="collection--navigation--button"
+            tabindex="0"
+            data-active="false"
+            data-column-size="2"
+            aria-label="{{ large_layout_t }}"
+          >
+            {% render 'icons', icon: 'grid-large' %}
+          </div>
+          <div
+            class="collection--navigation--button"
+            tabindex="0"
+            data-active="false"
+            data-column-size
+            aria-label="{{ small_layout_t }}"
+          >
+            {% render 'icons', icon: 'grid-small' %}
+          </div>
+        </div>
+      {% endif %}
+
+    </div>
+  {% endif %}
+
+  {% if show_browse_button or show_refine_button %}
+    <div class="collection--body--mobile-header" data-container="block" data-mq="small">
+      {% if show_browse_button %}
+        <div
+          class="collection--body--mobile-browse"
+          tabindex="0"
+          data-item="accent-text"
+          data-off-canvas--open="right-sidebar"
+          data-off-canvas--view="collection-filter"
+          data-toggle-menu="browse-filter"
+          aria-haspopup="menu"
+        >
+          {{ browse_t }}
+        </div>
+      {% endif %}
+      {% if show_refine_button %}
+        <div
+          class="collection--body--mobile-refine"
+          tabindex="0"
+          data-item="accent-text"
+          data-off-canvas--open="right-sidebar"
+          data-off-canvas--view="collection-filter"
+          data-toggle-menu="refine-filter"
+          aria-haspopup="menu"
+        >
+          {{ refine_t }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if show_sort_list or show_refine_list %}
+    {% comment %} this is used to render active tags above the product grid {% endcomment %}
+    <div class="collection--navigation--options-container" data-container="block" style="display:none;">
+      <ul class="collection--navigation--active-options" data-item="nav-text--sub">
+        {% if show_sort_list %}
+          <li class="collection--navigation--active-sort" tabindex="0" style="display:none;">
+            {{ sort_by_t }}:&nbsp;<span></span>
+            {%- render 'icons', icon: 'cross' -%}
+          </li>
+        {% endif %}
+        {% if show_refine_list %}
+          <li
+            class="collection--navigation--active-tag"
+            tabindex="0"
+            style="display:none;"
+            data-placeholder
+          >
+            <span></span>
+            {%- render 'icons', icon: 'cross' -%}
+          </li>
+          <li class="collection--navigation--active-price" tabindex="0" style="display:none;">
+            {{- cart.currency.symbol -}}
+            <span data-min-price></span>&nbsp;-&nbsp;
+            {{- cart.currency.symbol -}}
+            <span data-max-price></span>
+            {%- render 'icons', icon: 'cross' -%}
+          </li>
+        {% endif %}
+        <li class="collection--navigation--options-clear" tabindex="0" data-item="block-link">
+          <span>{{ clear_all_t }}</span>
+        </li>
+      </ul>
+    </div>
+  {% endif %}
+
+</div>
+
+{% if show_filter %}
+  <div class="collection--filter--for-off-canvas" style="display:none;">
+    {%
+      render 'collection--filter',
+      collection: collection,
+      custom_collection_list: custom_collection_list,
+      show_collection_list: show_collection_list,
+      show_refine_list: show_refine_list,
+      show_search_link: show_search_link,
+      show_sort_list: show_sort_list
+    %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collection navigation",
+  "settings": [
+    {
+      "content": "Quick links",
+      "type": "header"
+    },
+    {
+      "label": "Show browse button",
+      "id": "show-browse-button",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "label": "Show sort by button",
+      "id": "show-sort-button",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "label": "Show refine button",
+      "id": "show-refine-button",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "label": "Show layout buttons",
+      "id": "show-layout-buttons",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "content": "Drawer",
+      "type": "header"
+    },
+    {
+      "label": "Show collections list",
+      "id": "show-collections-list",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "label": "Enable custom collection list",
+      "id": "custom-collection-list",
+      "type": "link_list"
+    },
+    {
+      "label": "Show sort by list",
+      "id": "show-sort-list",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "label": "Show refine list",
+      "id": "show-refine-list",
+      "type": "checkbox",
+      "default": true
+    },
+    {
+      "label": "Show search link",
+      "id": "show-search-link",
+      "type": "checkbox",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

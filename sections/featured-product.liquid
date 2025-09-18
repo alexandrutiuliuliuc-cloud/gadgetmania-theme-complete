@@ -1,0 +1,408 @@
+{%- liquid
+  assign add_to_cart_t = 'products.add_to_cart' | t
+  assign price_t = 'home.onboarding.price' | t
+
+  assign bg_color = section.settings.background-color
+  assign container_width = section.settings.container-width
+  assign load_collapsible_tab = false
+  assign load_model = false
+  assign overline = section.settings.overline
+  assign product = all_products[section.settings.featured_product]
+  assign show_vendor = section.settings.show_vendor
+  assign spacing_above = section.settings.spacing-above
+  assign spacing_below = section.settings.spacing-below
+  assign title = product.title
+  assign unique_handle = 'featured--' | append: section.id
+  assign vendor = product.vendor
+  assign vendor_url = product.vendor | url_for_vendor
+  assign video_looping_enabled = section.settings.loop-enabled
+  assign load_youtube = false
+
+  assign onboarding = true
+  if section.settings.featured_product != blank
+    assign onboarding = false
+  endif
+
+  if onboarding
+    assign title = 'home.onboarding.product_title' | t
+    assign vendor = 'home.onboarding.vendor' | t
+  endif
+-%}
+
+{%- capture header -%}
+  {% if overline != blank %}
+    <div class="featured-product--overline" data-item="overline">
+      {{ overline }}
+    </div>
+  {% endif %}
+
+  <h2 data-item="section-heading">
+    <a href="{{ product.url }}">{{ title }}</a>
+  </h2>
+
+  {% if show_vendor %}
+    <div class="featured-product--vendor" data-item="accent-text">
+      <a href="{{ vendor_url }}">{{ vendor }}</a>
+    </div>
+  {% endif %}
+{%- endcapture -%}
+
+{% for media in product.media %}
+  {%- liquid
+    if media.media_type == "model"
+      assign load_model = true
+    elsif media.media_type == "external_video"
+      assign load_youtube = true
+    endif
+  -%}
+
+  {%- capture product_media -%}
+    {{ product_media }}
+
+    {%
+      render "product--media",
+      media_view: "featured",
+      product: product,
+      inside_carousel: false,
+      product_media: media,
+      video_looping_enabled: video_looping_enabled
+    %}
+  {%- endcapture -%}
+
+  {%- if product.media.size > 1 -%}
+    {%- capture thumb_html -%}
+      {{- thumb_html -}}
+
+      {%
+        render "product--media",
+        media_view: "thumb",
+        product_media: media,
+        product: product
+      %}
+    {%- endcapture -%}
+  {%- endif -%}
+{% endfor %}
+
+{% comment %} View {% endcomment %}
+<div
+  class="featured-product--root"
+  data-js-class="CoreProduct"
+  data-section-id="{{ section.id }}"
+  data-background-color="{{ bg_color }}"
+  data-container-width="{{ container_width }}"
+  data-spacing-above="{{ spacing_above }}"
+  data-spacing-below="{{ spacing_below }}"
+>
+  <div class="featured-product--wrapper">
+    <div class="featured-product--body">
+      <div class="featured-product--header" data-mq="small">
+        {{ header }}
+      </div>
+
+      {% if onboarding %}
+        <div class="featured-product--placeholder" data-active="true">
+          {%
+            render "placeholder",
+            type: "product",
+            aspect_ratio: 0.75,
+            placeholder_index: 1
+          %}
+        </div>
+
+      {% else %}
+        <div class="featured-product--container">
+          {{ product_media }}
+
+          {% if product.media.size > 1 %}
+            {%
+              render "product--media",
+              media_view: "thumb-container",
+              thumb_html: thumb_html,
+              direction: "row",
+              product: product
+            %}
+          {% endif %}
+        </div>
+
+      {% endif %}
+
+      <div class="featured-product--info">
+        <div class="featured-product--info--container">
+          <div class="featured-product--header" data-mq="medium-large">
+            {{ header }}
+          </div>
+
+          <div class="featured-product--blocks">
+            {% for block in section.blocks %}
+              <div
+                class="featured-product--block"
+                data-block-type="{{ block.type }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- case block.type -%}
+                  {%- when 'collapsible-tab' -%}
+                    {%- assign load_collapsible_tab = true -%}
+                    {%- render 'collapsible-tab', block: block -%}
+
+                  {%- when 'form' -%}
+                    {%- if onboarding -%}
+                      <div class="featured-product--price-wrapper">
+                        <span class="featured-product--price" data-item='accent-text'>
+                          {{- price_t -}}
+                        </span>
+                      </div>
+
+                      <div class="featured-product--add-to-cart" data-item="button">
+                        <div>
+                          {{ add_to_cart_t }}
+                        </div>
+                      </div>
+
+                    {%- else -%}
+                      {%-
+                        render "product--form",
+                        product: product,
+                        section_id: section.id,
+                        unique_handle: unique_handle,
+                        low_stock_amount: block.settings.low-in-stock-amount,
+                        show_quantity: block.settings.quantity-show,
+                        show_unavailable_form: block.settings.sold-out-form-show,
+                        size_chart_enabled: block.settings.size-chart-enabled,
+                        size_chart_content: block.settings.size-chart-content,
+                        size_chart_option: block.settings.size-chart-option,
+                        smart_payment_enabled: block.settings.smart-payment-enabled,
+                        swatches_enabled: block.settings.swatches-enabled,
+                        variant_style: block.settings.variant-style
+                      -%}
+                    {%- endif -%}
+
+                  {%- when 'rating' -%}
+                    {%- render 'product-rating', product: product -%}
+
+                  {%- when 'liquid' -%}
+                    {{- block.settings.custom-liquid -}}
+
+                  {%- when '@app' -%}
+                    {%- render block -%}
+
+                {%- endcase -%}
+              </div>
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+{%
+  render "product--scripts",
+  product_media: product.media,
+  callback_enabled: false,
+  load_model: load_model,
+  load_youtube: load_youtube,
+  load_collapsible_tab: load_collapsible_tab
+%}
+
+{% schema %}
+  {
+    "name": "Featured product",
+    "settings": [
+      {
+        "id": "background-color",
+        "label": "Background color",
+        "type": "select",
+        "options": [
+          { "label": "None", "value": "none" },
+          { "label": "Light grey", "value": "light" },
+          { "label": "Accent", "value": "accent" }
+        ],
+        "default": "none"
+      },
+      {
+        "id": "container-width",
+        "label": "Width of container",
+        "type": "range",
+        "min": 1,
+        "max": 6,
+        "step": 1,
+        "default": 4
+      },
+      {
+        "id": "spacing-above",
+        "label": "Spacing above",
+        "type": "checkbox",
+        "default": true
+      },
+      {
+        "id": "spacing-below",
+        "label": "Spacing below",
+        "type": "checkbox",
+        "default": true
+      },
+      {
+        "id": "overline",
+        "label": "Overline",
+        "type": "text",
+        "default": "Overline text"
+      },
+      {
+        "type": "product",
+        "id": "featured_product",
+        "label": "Product"
+      },
+      {
+        "id": "show_vendor",
+        "label": "Show vendor",
+        "type": "checkbox",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Media"
+      },
+      {
+        "type": "paragraph",
+        "content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)."
+      },
+      {
+        "type": "checkbox",
+        "id": "loop-enabled",
+        "label": "Enable video looping",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "form",
+        "name": "Product form",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "select",
+            "id": "variant-style",
+            "label": "Product variant style",
+            "options": [
+              { "label": "Dropdowns", "value": "dropdowns" },
+              { "label": "Buttons", "value": "buttons" }
+            ],
+            "default": "dropdowns"
+          },
+          {
+            "type": "checkbox",
+            "id": "swatches-enabled",
+            "label": "Enable color swatches",
+            "default": false,
+            "info": "Automatically turn color options into swatches."
+          },
+          {
+            "type": "checkbox",
+            "id": "smart-payment-enabled",
+            "label": "Show dynamic checkout button",
+            "info": "Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "sold-out-form-show",
+            "label": "Show notification form when product is sold out"
+          },
+          {
+            "label": "Show low in stock notice when quantity is",
+            "id": "low-in-stock-amount",
+            "type": "range",
+            "min": 0,
+            "max": 10,
+            "step": 1,
+            "default": 5,
+            "info": "Set to 0 to disable this feature. Updated for each variant."
+          },
+          {
+            "type": "checkbox",
+            "id": "quantity-show",
+            "label": "Show quantity selector",
+            "default": false
+          },
+          {
+            "type": "header",
+            "content": "Size chart"
+          },
+          {
+            "type": "checkbox",
+            "id": "size-chart-enabled",
+            "label": "Enable",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "size-chart-option",
+            "label": "Link from option",
+            "default": "size"
+          },
+          {
+            "type": "page",
+            "id": "size-chart-content",
+            "label": "Page content"
+          }
+        ]
+      },
+      {
+        "type": "collapsible-tab",
+        "name": "Collapsible tab",
+        "settings": [
+          {
+            "id": "heading",
+            "label": "Heading",
+            "type": "text",
+            "default": "Collapsible tab"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Text",
+            "default": "<p>Place collapsible tab content here.</p>"
+          },
+          {
+            "type": "page",
+            "id": "page-content",
+            "label": "Tab content from page"
+          }
+        ]
+      },
+      {
+        "type": "rating",
+        "name": "Product rating",
+        "limit": 1
+      },
+      {
+        "type": "liquid",
+        "name": "Custom liquid",
+        "settings": [
+          {
+            "type": "liquid",
+            "id": "custom-liquid",
+            "label": "Custom Liquid",
+            "info": "Add app snippets or other Liquid code to create advanced customizations."
+          }
+        ]
+      },
+      {
+        "type": "@app"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured product",
+        "blocks": [
+          {
+            "type": "form",
+            "settings": {}
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

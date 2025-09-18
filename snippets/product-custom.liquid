@@ -1,0 +1,24 @@
+<!--Sezione custom creata per mostrare il video e la descizione nella pagina prodotto. G. -->
+
+<div style="background-color: #FFF8EB; padding: 20px;">
+  <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; flex-wrap: wrap;">
+
+    <!-- Sezione descrizione lunga -->
+    <div style="flex: 2; font-family: 'Futura', sans-serif; color: #333; text-align: center; margin-bottom: 20px; padding: 0 10px;">
+      {{ product.metafields.custom.descrizionelunga | escape | newline_to_br }}
+    </div>
+
+    <!-- Sezione immagine o video -->
+    <div style="flex: 1; min-width: 300px; max-width: 400px; display: flex; justify-content: center; padding: 0 10px;">
+      {% if product.metafields.custom.url_video %}
+        <video controls playsinline 
+               style="width: 100%; height: auto; max-height: 600px; object-fit: contain;">
+          <source src="{{ product.metafields.custom.url_video }}" type="video/mp4">
+          Il tuo browser non supporta il video.
+        </video>
+      {% else %}
+        <img src="{{ product.media.last | img_url: 'large' }}" alt="{{ product.title }}" style="width:80%; height: auto; max-height: 400px; object-fit: contain;">
+      {% endif %}
+    </div>
+  </div>
+</div>

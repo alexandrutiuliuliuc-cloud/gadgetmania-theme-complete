@@ -1,0 +1,110 @@
+{%- liquid
+  comment
+    Translations
+  endcomment
+
+  assign collections_title = 'collections.placeholder.collection_title' | t
+  assign collections_num_items_t = 'collections.placeholder.num_items' | t
+  assign collections_empty_t = 'collections.no_collections_feedback' | t
+  assign collections_empty_link_t = 'collections.no_products_link' | t
+  assign trans_product = 'collections.product' | t
+  assign trans_products = 'collections.products' | t
+-%}
+
+<div
+  class="collection-list--root"
+  data-section-id="{{ section.id }}"
+  data-js-class="ListCollections"
+>
+  <div class="collection-list--wrapper" data-container="section">
+    {% if collections.size > 0 %}
+      <div
+        class="collection-list--grid"
+        data-container="panel"
+        data-columns="3"
+        data-mobile-columns="1"
+      >
+        {% for collection in collections %}
+          {% unless
+            collection.handle == 'all' or
+            collection.handle == 'all-products' or
+            collection.handle == 'frontpage'
+          %}
+            <div class="collection-list--item" data-container="block">
+              <a href="{{ collection.url }}">
+                <div class="collection-list--image-wrapper" data-item="image">
+                  <div class="collection-list--image">
+                  {%- liquid
+                    if collection.image
+                      render "image", image: collection.image, full_width: true
+                    elsif collection.products.first.featured_media.preview_image
+                      render "image", image: collection.products.first.featured_media.preview_image, full_width: true
+                    else
+                      render "placeholder", type: "collection", aspect_ratio: 1, placeholder_index: 1
+                    endif
+                  -%}
+                  </div>
+                </div>
+
+                <h3 data-item="block-heading">
+                  {{ collection.title }}
+                </h3>
+
+                <p data-item="accent-text">
+                  {{ collection.all_products_count }} {{ collection.all_products_count | pluralize: trans_product, trans_products }}
+                </p>
+              </a>
+            </div>
+          {% endunless %}
+
+        {% endfor %}
+      </div>
+
+    {% else %}
+      <div class="collection-list--ph-text">
+        <p data-item="paragraph">
+          {{ collections_empty_t }}
+        </p>
+        <a data-item="button" href="/admin/collections">
+          <div>{{ collections_empty_link_t }}</div>
+        </a>
+      </div>
+
+      <div
+        class="collection-list--grid"
+        data-container="panel"
+        data-columns="3"
+        data-mobile-columns="1"
+      >
+        {% for i in (1..6) %}
+          <div class="collection-list--item">
+            <div class="collection-list--image" data-item="image">
+              {%
+                render "placeholder",
+                type: "collection",
+                aspect_ratio: 1.333,
+                placeholder_index: i
+              %}
+            </div>
+
+            <h3 data-item="block-heading">
+              {{ collections_title }}
+            </h3>
+
+            <p data-item="accent-text">
+              {{ collections_num_items_t }}
+            </p>
+          </div>
+        {% endfor %}
+      </div>
+
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "List collections",
+    "settings": []
+  }
+{% endschema %}
