@@ -1,1 +1,564 @@
-{"sections":{"custom_liquid_4aVDpy":{"type":"custom-liquid","settings":{"custom-liquid":"<style>\n  .custom-fullscreen-video {\n    position: relative;\n    width: 100%;\n    height: 130vh;\n    overflow: hidden;\n  }\n\n  .custom-fullscreen-video video {\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n    display: block;\n  }\n\n  \/* Correzione per mobile *\/\n  @media screen and (max-width: 767px) {\n    .custom-fullscreen-video {\n      height: 80vh; \/* Altezza su mobile *\/\n    }\n\n    \/* Rimuovi padding dalla sezione genitore *\/\n    .custom-liquid--root {\n      padding-left: 0 !important;  \/* Rimuove padding sinistro *\/\n      padding-right: 0 !important; \/* Rimuove padding destro *\/\n    }\n  }\n<\/style>\n\n<div class=\"custom-liquid--root\" data-section-id=\"template--15389963944150__custom_liquid_4aVDpy\" data-background-color=\"none\" data-container-width=\"6\" data-light-text=\"false\" data-spacing-above=\"false\" data-spacing-below=\"false\">\n  <div class=\"custom-liquid--wrapper\">\n    <div class=\"custom-fullscreen-video\">\n      <video autoplay muted loop playsinline preload=\"metadata\">\n        <source src=\"https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/42fbc58206314373afd4d5e7e23f3973.mp4\" type=\"video\/mp4\">\n        Il tuo browser non supporta i video HTML5.\n      <\/video>\n    <\/div>\n  <\/div>\n<\/div>","background-color":"none","light-text":false,"container-width":6,"spacing-above":false,"spacing-below":false}},"slideshow":{"type":"slideshow","blocks":{"slide-0":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/IMG_0197_1.jpg","text-position":"center","text-width":"large","overline":"BOLDRINI SELLERIA DAL 1955","title":"ESCLUSIVITÀ & DESIGN","description":"","link-url":"shopify:\/\/collections\/collezione-borse","link-text":"Scopri i nostri prodotti"}},"slide-2":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Screenshot2024-09-27alle12.13.34.png","text-position":"center","text-width":"small","overline":"BOLDRINI SELLERIA DAL 1955","title":"CLASSICITÀ & UNICITÀ","description":"","link-url":"shopify:\/\/collections\/collezione-opera","link-text":"Scopri la Collezione Opera"}},"slide-1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Screenshot2024-09-27alle12.20.55.png","text-position":"center","text-width":"small","overline":"BOLDRINI SELLERIA DAL 1955","title":"ELEGANZA & PERSONALITÀ","description":"","link-url":"shopify:\/\/collections\/collezione-borse","link-text":"Definisci il tuo look"}},"slide-3":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/IMG_0224_1.jpg","text-position":"center","text-width":"medium","overline":"BOLDRINI SELLERIA DAL 1955","title":"UNA STORIA DI PASSIONE","description":"","link-url":"shopify:\/\/pages\/valori","link-text":"Scopri il brand"}},"c5505dd0-59f9-4a20-ad72-b2739f5065ce":{"type":"image","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/Sito_web_1080_x_1080_px_1.png","text-position":"bottom-left","text-width":"large","overline":"","title":"","description":"","link-url":"shopify:\/\/collections\/collezione-borse","link-text":""}}},"block_order":["slide-0","slide-2","slide-1","slide-3","c5505dd0-59f9-4a20-ad72-b2739f5065ce"],"disabled":true,"custom_css":["@media screen and (max-width: 1023px) {.featured-content--text {position: absolute !important; bottom: 10px !important; left: 10px !important; text-align: left !important; width: auto !important; max-width: 70%; } .featured-content--text-container {display: block !important; } .featured-content--overline {font-size: 0.6rem !important; } .featured-content--title {font-size: 1.2rem !important; } .featured-content--description p {font-size: 0.9rem !important; padding: 8px 1px !important; } .featured-content--link a {font-size: 1rem !important; }}"],"settings":{"text-color":"auto","background-color":"none","spacing-above":false,"spacing-below":false,"spacing-around-blocks":false,"image-height":5,"darken-image":false,"blocks_per_slide":2,"blocks_per_slide_mobile":"1","box-around-text":false,"mobile-overlay":true,"auto-rotate":true,"rotate-frequency":11,"transition_type":"fade"}},"brand_introduction":{"type":"brand-introduction","settings":{"title":"Gadget Mania - Innovazione e Tecnologia","text":"<p>Da anni siamo il punto di riferimento per chi cerca i gadget più innovativi e le ultime novità tecnologiche. La nostra passione per l'innovazione ci spinge a selezionare solo i prodotti migliori per offrirti un'esperienza di acquisto unica e soddisfacente.</p>","text_alignment":"center","button_text":"Scopri di più","button_url":"/pages/about","background_color":"#f8f8f8","title_color":"#333333","text_color":"#666666","button_bg_color":"#007bff","button_text_color":"#ffffff"}},"16369683856c8403b6":{"type":"featured-text","settings":{"background-color":"accent","light-text":false,"container-width":2,"spacing-above":true,"spacing-below":true,"overline":"Una storia unica di passione e stile inconfondibile","heading":"BOLDRINI SELLERIA DAL 1955","text":"<p>Design,ricerca, lavorazione a mano, pellami conciati al vegetale. La storia di un gusto classico rivisto in chiave moderna: una famiglia toscana fatta di amore, passione e dedizione per il proprio lavoro, che li ha portati ad essere un must have richiesto in tutto il mondo.<\/p>"}},"615f942e-7758-4f0e-b879-c744072d4e50":{"type":"featured-collection","settings":{"collection":"novita","background-color":"none","spacing-above":true,"spacing-below":true,"featured-collection--image--show":false,"featured-collection--description--show":true,"display-type":"slider","products-per-row--desktop":"3","products-per-row--mobile":"1"}},"grid-with-overlay":{"type":"grid-with-overlay","blocks":{"overlay-block-2":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/L2A0654_1.jpg","wide":false,"tall":true,"retain-ratio":false,"title":"BORSE A TRACOLLA","link-url":"shopify:\/\/collections\/borse-a-tracolla","link-text":""}},"overlay-block-3":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/IMG_0441_1.jpg","wide":false,"tall":true,"retain-ratio":false,"title":"BORSE A MANO","link-url":"shopify:\/\/collections\/borse-a-mano","link-text":""}},"1ed79183-6f3b-48c0-a822-c776038bf7e6":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/IMG_0357_1.jpg","wide":false,"tall":true,"retain-ratio":false,"title":"BORSE SHOPPING","link-url":"shopify:\/\/collections\/borse-shopping","link-text":""}},"9190ae8e-5f95-4f98-97ba-f35e9ecbcb32":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/L2A7109-2.jpg","wide":false,"tall":true,"retain-ratio":false,"title":"ZAINI","link-url":"shopify:\/\/collections\/zaini","link-text":""}}},"block_order":["overlay-block-2","overlay-block-3","1ed79183-6f3b-48c0-a822-c776038bf7e6","9190ae8e-5f95-4f98-97ba-f35e9ecbcb32"],"settings":{"text-style":"light","background-color":"accent","spacing":true,"mobile-overlay":true,"container-width":4,"spacing-above":true,"spacing-below":true,"width":4,"mobile-width":"1","heading":"","subtitle":"","link-url":"","link-text":""}},"featured_collection_43Yn49":{"type":"featured-collection","name":"Featured collection","settings":{"collection":"best-seller","background-color":"none","spacing-above":true,"spacing-below":false,"featured-collection--image--show":false,"featured-collection--description--show":true,"display-type":"slider","products-per-row--desktop":"3","products-per-row--mobile":"1"}},"custom_content_WmkWhL":{"type":"custom-content","name":"Custom content","settings":{"custom_html":"<style>\n  \/* Contenitore principale flessibile: immagine + testo *\/\n  .bs-img-text {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    justify-content: center;\n    gap: 1,5rem;\n    margin: 1rem 0;\n    font-family: 'Futura', sans-serif;\n    color: #000;\n  }\n\n  \/* Stili responsive per mobile *\/\n  @media (max-width: 768px) {\n    .bs-img-text {\n      flex-direction: column-reverse; \/* immagine sotto il testo *\/\n    }\n\n    .bs-text {\n      text-align: center;\n    }\n  }\n\n  \/* Immagine *\/\n  .bs-img-text img {\n    width: 100%;\n    height: auto;\n    border-radius: 8px;\n  }\n\n  .bs-img {\n    flex: 1 1 300px;\n  }\n\n  \/* Blocco testo *\/\n  .bs-text {\n    flex: 1 1 300px;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n  }\n\n  \/* Titolo *\/\n  .bs-text h2 {\n    font-size: 22px; \/* Modifica qui la dimensione del titolo *\/\n    margin-bottom: 0.5rem;\n    font-weight: normal;\n  }\n\n  \/* Paragrafo *\/\n  .bs-text p {\n    font-size: 14px; \/* Modifica qui la dimensione del testo descrizione *\/\n    line-height: 1.6;\n    margin-bottom: 1.5rem;\n  }\n\n  \/* Bottone testuale *\/\n  .bs-btn {\n    font-size: 12px; \/* Modifica qui la dimensione del bottone *\/\n    font-weight: normal;\n    text-transform: uppercase;\n    text-decoration: underline;\n    color: #000;\n    background: none;\n    border: none;\n    padding: 0;\n    font-family: 'Futura', sans-serif;\n    cursor: pointer;\n    letter-spacing: 0.05em;\n  }\n\n  \/* Hover del bottone *\/\n  .bs-btn:hover {\n    text-decoration: none;\n  }\n<\/style>\n\n<!-- Layout immagine + testo -->\n<div class=\"bs-img-text\">\n  <!-- Immagine -->\n  <div class=\"bs-img\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0605\/4117\/3974\/files\/Norma_Osso.jpg?v=1749203788\" alt=\"Borsa Opera Norma colore Osso\">\n  <\/div>\n\n  <!-- Testo + bottone -->\n  <div class=\"bs-text\">\n    <h2>La nostra <em>Opera<\/em> d’arte<\/h2>\n    <p>\n      Ispirata alla bellezza della scultura, la collezione <em>Opera<\/em> è la sintesi perfetta tra arte e moda.<br>\n      Le sue forme, scolpite come petali di pietra, raccontano una storia di eleganza e carattere.    \n      <br><br>\n      Una collezione pensata per chi cerca un accessorio che parli di sé, senza bisogno di parole.\n    <\/p>\n    <a href=\"https:\/\/boldriniselleria.com\/collections\/collezione-opera\" class=\"bs-btn\">SCOPRI LA COLLEZIONE<\/a>\n  <\/div>\n<\/div>"}},"1636982822ff7e802e":{"type":"slideshow","blocks":{"163698282266c482c9-0":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/A719686D-C984-4B35-88FD-91F50B445476.png","text-position":"bottom-left","text-width":"medium","overline":"","title":"LAVORAZIONE ARTIGIANALE","description":"<p><em>Tutta la lavorazione è realizzata dalle mani sapienti dei nostri maestri artigiani e seguita  in ogni suo dettaglio, a partire dall’oculata selezione del pellame, in tutte le fasi del processo produttivo, sino allo scrupoloso controllo dell’articolo finito.<\/em><\/p>","link-url":"","link-text":""}},"163698282266c482c9-1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/A719686D-C984-4B35-88FD-91F50B445476.png","text-position":"bottom-left","text-width":"medium","overline":"","title":"PELLE CONCIATA AL VEGETALE","description":"<p><em>Utilizziamo cuoio conciato al vegetale nelle vicine concerie toscane per realizzare un prodotto estremamente di <\/em>qualità<em>. Naturale e morbido, è il protagonista indiscusso delle nostre collezioni, della nostra azienda.<\/em><\/p>","link-url":"\/","link-text":""}},"163698282266c482c9-2":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/A719686D-C984-4B35-88FD-91F50B445476.png","text-position":"bottom-left","text-width":"medium","overline":"","title":"ECCELLENZA DEL MADE IN TUSCANY","description":"<p><em>Borse e accessori in cuoio di Alta Qualità prodotti interamente in Toscana. 100% Made in Tuscany, 100% Made in Italy,<\/em><\/p>","link-url":"\/","link-text":""}}},"block_order":["163698282266c482c9-0","163698282266c482c9-1","163698282266c482c9-2"],"disabled":true,"settings":{"text-color":"dark","background-color":"none","spacing-above":false,"spacing-below":false,"spacing-around-blocks":false,"image-height":1,"darken-image":false,"blocks_per_slide":3,"blocks_per_slide_mobile":"1","box-around-text":true,"mobile-overlay":true,"auto-rotate":true,"rotate-frequency":7,"transition_type":"slide"}},"featured_text_qMEtqx":{"type":"featured-text","disabled":true,"settings":{"background-color":"accent","light-text":false,"container-width":4,"spacing-above":true,"spacing-below":false,"overline":"","heading":"L'arte dietro ogni borsa","text":"<p>In ogni cucitura c’è una storia, un gesto d’amore, una passione che si rinnova ogni giorno.<\/p><p>Guarda il video e scopri come vengono realizzate le nostre borse.<\/p>"}},"custom_liquid_pjgmrK":{"type":"custom-liquid","disabled":true,"name":"Custom Liquid","settings":{"custom-liquid":"<style>\n  .custom-fullscreen-video {\n    position: relative;\n    width: 100%;\n    height: 60vh;\n    overflow: hidden;\n  }\n\n  .custom-fullscreen-video iframe {\n    width: 100%;\n    height: 100%;\n    border: none;\n  }\n\n  @media screen and (max-width: 767px) {\n    .custom-fullscreen-video {\n      height: 50vh;\n    }\n\n    .custom-liquid--root {\n      padding-left: 0 !important;\n      padding-right: 0 !important;\n    }\n  }\n<\/style>\n\n<div class=\"custom-liquid--root\">\n  <div class=\"custom-liquid--wrapper\">\n    <div class=\"custom-fullscreen-video\">\n      <iframe\n        src=\"https:\/\/www.youtube.com\/embed\/fJsvjAjqvWc?controls=1&autoplay=0&mute=0&loop=0&rel=0&modestbranding=1\"\n        title=\"Video di presentazione\"\n        allow=\"accelerometer; encrypted-media; gyroscope; picture-in-picture\"\n        allowfullscreen>\n      <\/iframe>\n    <\/div>\n  <\/div>\n<\/div>","background-color":"accent","light-text":false,"container-width":4,"spacing-above":true,"spacing-below":true}},"169f8ae5-f373-45b8-bc35-7ec241b2dc4a":{"type":"featured-text","disabled":true,"settings":{"background-color":"dark","light-text":true,"container-width":4,"spacing-above":true,"spacing-below":true,"overline":"","heading":"CYBER MONDAY","text":"<p>Sconto del -20% su tutti i prodotti<\/p>"}},"1636983325aecb4d60":{"type":"text-columns","blocks":{"1636983325a41f89f8-1":{"type":"image","settings":{"show-image":true,"image":"shopify:\/\/shop_images\/IMG_5186_1.jpg","title":"SCANDIANO BOLDRINI","description":"<p>Scandiano Boldrini, fondatore dell’azienda nel 1955. Mente creativa illuminata, mani sapienti e un forte amore e<br\/>rispetto per l’artigianalità e la tradizione toscana della vacchetta conciata al vegetale.<\/p>","link-url":"shopify:\/\/pages\/la-nostra-storia","link-text":""}},"1636983325a41f89f8-2":{"type":"image","settings":{"show-image":true,"image":"shopify:\/\/shop_images\/IMG_5187_1.jpg","title":"LUCA BOLDRINI","description":"<p>Luca Boldrini, figlio di Scandiano e Presidente di “Boldrini Selleria”. Il padre gli ha tramandato tutti i segreti della lavorazione del cuoio e soprattutto il rispetto delle materie prime e delle persone che lavorano con lui. Gli piace definire la sua azienda “una famiglia artigianale”.<\/p>","link-url":"","link-text":""}}},"block_order":["1636983325a41f89f8-1","1636983325a41f89f8-2"],"disabled":true,"settings":{"background-color":"accent","light-text":false,"block-spacing":true,"container-width":1,"spacing-above":true,"spacing-below":true,"width":2,"image-width":0,"mobile-width":"1","text-alignment":"center","heading":"LA NOSTRA STORIA","subtitle":"La storia di una famiglia toscana fatta di amore, passione e dedizione per il proprio lavoro, tramandato dal padre al figlio con un unico obiettivo: la ricerca dell’eccellenza,","link-url":"","link-text":""}},"text_columns_Jiic7t":{"type":"text-columns","blocks":{"image_bx4b6L":{"type":"image","settings":{"show-image":true,"image":"shopify:\/\/shop_images\/solidarity_5256056.png","title":"Spedizione gratuita","description":"","link-url":"","link-text":""}},"image_wwdipN":{"type":"image","settings":{"show-image":true,"image":"shopify:\/\/shop_images\/1077030.png","title":"Consegna in tutto il mondo","description":"","link-url":"","link-text":""}},"image_aQD4nw":{"type":"image","settings":{"show-image":true,"image":"shopify:\/\/shop_images\/italy-map_1816226.png","title":"100% Made in Italy","description":"","link-url":"","link-text":""}},"image_U9ekCX":{"type":"image","settings":{"show-image":true,"image":"shopify:\/\/shop_images\/padlock_309507.png","title":"Pagamenti sicuri","description":"","link-url":"","link-text":""}}},"block_order":["image_bx4b6L","image_wwdipN","image_aQD4nw","image_U9ekCX"],"name":"Text columns with images","settings":{"background-color":"accent","light-text":false,"block-spacing":true,"container-width":2,"spacing-above":true,"spacing-below":true,"width":4,"image-width":20,"mobile-width":"2","text-alignment":"center","heading":"","subtitle":"","link-url":"","link-text":""}},"featured-collection-slider":{"type":"featured-collection","disabled":true,"settings":{"collection":"borse-a-mano","background-color":"light","spacing-above":true,"spacing-below":true,"featured-collection--image--show":true,"featured-collection--description--show":true,"display-type":"slider","products-per-row--desktop":"3","products-per-row--mobile":"2"}},"1637013558717504ee":{"type":"slideshow","blocks":{"163701355868e9266f-0":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/L2A6778.jpg","text-position":"bottom-left","text-width":"medium","overline":"","title":"DOMANDE FREQUENTI","description":"","link-url":"shopify:\/\/pages\/domande-frequenti","link-text":"TOGLITI OGNI DUBBIO"}},"163701355868e9266f-1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/L2A6551.jpg","text-position":"bottom-left","text-width":"medium","overline":"","title":"LA NOSTRA STORIA","description":"","link-url":"shopify:\/\/pages\/valori","link-text":"UNA STORIA UNICA DI PASSIONE E STILE"}}},"block_order":["163701355868e9266f-0","163701355868e9266f-1"],"settings":{"text-color":"auto","background-color":"none","spacing-above":false,"spacing-below":false,"spacing-around-blocks":false,"image-height":2,"darken-image":true,"blocks_per_slide":2,"blocks_per_slide_mobile":"1","box-around-text":false,"mobile-overlay":true,"auto-rotate":false,"rotate-frequency":7,"transition_type":"fade"}},"newsletter":{"type":"newsletter","custom_css":[],"settings":{"background-color":"none","light-text":false,"spacing-above":true,"spacing-below":true,"heading":"NEWSLETTER BOLDRINI SELLERIA","newsletter--subheading":"<p>Iscriviti ora e ricevi un codice sconto del 10% valido su tutto il catalogo.<\/p>"}}},"order":["custom_liquid_4aVDpy","slideshow","brand_introduction","16369683856c8403b6","615f942e-7758-4f0e-b879-c744072d4e50","grid-with-overlay","featured_collection_43Yn49","custom_content_WmkWhL","1636982822ff7e802e","featured_text_qMEtqx","custom_liquid_pjgmrK","169f8ae5-f373-45b8-bc35-7ec241b2dc4a","1636983325aecb4d60","text_columns_Jiic7t","featured-collection-slider","1637013558717504ee","newsletter"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_4aVDpy": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom-liquid": "<style>\n  .custom-fullscreen-video {\n    position: relative;\n    width: 100%;\n    height: 130vh;\n    overflow: hidden;\n  }\n\n  .custom-fullscreen-video video {\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n    display: block;\n  }\n\n  /* Correzione per mobile */\n  @media screen and (max-width: 767px) {\n    .custom-fullscreen-video {\n      height: 80vh; /* Altezza su mobile */\n    }\n\n    /* Rimuovi padding dalla sezione genitore */\n    .custom-liquid--root {\n      padding-left: 0 !important;  /* Rimuove padding sinistro */\n      padding-right: 0 !important; /* Rimuove padding destro */\n    }\n  }\n</style>\n\n<div class=\"custom-liquid--root\" data-section-id=\"template--15389963944150__custom_liquid_4aVDpy\" data-background-color=\"none\" data-container-width=\"6\" data-light-text=\"false\" data-spacing-above=\"false\" data-spacing-below=\"false\">\n  <div class=\"custom-liquid--wrapper\">\n    <div class=\"custom-fullscreen-video\">\n      <video autoplay muted loop playsinline preload=\"metadata\">\n        <source src=\"https://cdn.shopify.com/videos/c/o/v/42fbc58206314373afd4d5e7e23f3973.mp4\" type=\"video/mp4\">\n        Il tuo browser non supporta i video HTML5.\n      </video>\n    </div>\n  </div>\n</div>",
+        "background-color": "none",
+        "light-text": false,
+        "container-width": 6,
+        "spacing-above": false,
+        "spacing-below": false
+      }
+    },
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide-0": {
+          "type": "image",
+          "settings": {
+            "text-position": "center",
+            "text-width": "large",
+            "overline": "BOLDRINI SELLERIA DAL 1955",
+            "title": "ESCLUSIVITÀ & DESIGN",
+            "description": "",
+            "link-url": "shopify://collections/collezione-borse",
+            "link-text": "Scopri i nostri prodotti"
+          }
+        },
+        "slide-2": {
+          "type": "image",
+          "settings": {
+            "text-position": "center",
+            "text-width": "small",
+            "overline": "BOLDRINI SELLERIA DAL 1955",
+            "title": "CLASSICITÀ & UNICITÀ",
+            "description": "",
+            "link-url": "shopify://collections/collezione-opera",
+            "link-text": "Scopri la Collezione Opera"
+          }
+        },
+        "slide-1": {
+          "type": "image",
+          "settings": {
+            "text-position": "center",
+            "text-width": "small",
+            "overline": "BOLDRINI SELLERIA DAL 1955",
+            "title": "ELEGANZA & PERSONALITÀ",
+            "description": "",
+            "link-url": "shopify://collections/collezione-borse",
+            "link-text": "Definisci il tuo look"
+          }
+        },
+        "slide-3": {
+          "type": "image",
+          "settings": {
+            "text-position": "center",
+            "text-width": "medium",
+            "overline": "BOLDRINI SELLERIA DAL 1955",
+            "title": "UNA STORIA DI PASSIONE",
+            "description": "",
+            "link-url": "shopify://pages/valori",
+            "link-text": "Scopri il brand"
+          }
+        },
+        "c5505dd0-59f9-4a20-ad72-b2739f5065ce": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "text-position": "bottom-left",
+            "text-width": "large",
+            "overline": "",
+            "title": "",
+            "description": "",
+            "link-url": "shopify://collections/collezione-borse",
+            "link-text": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide-0",
+        "slide-2",
+        "slide-1",
+        "slide-3",
+        "c5505dd0-59f9-4a20-ad72-b2739f5065ce"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media screen and (max-width: 1023px) {.featured-content--text {position: absolute !important; bottom: 10px !important; left: 10px !important; text-align: left !important; width: auto !important; max-width: 70%; } .featured-content--text-container {display: block !important; } .featured-content--overline {font-size: 0.6rem !important; } .featured-content--title {font-size: 1.2rem !important; } .featured-content--description p {font-size: 0.9rem !important; padding: 8px 1px !important; } .featured-content--link a {font-size: 1rem !important; }}"
+      ],
+      "settings": {
+        "text-color": "auto",
+        "background-color": "none",
+        "spacing-above": false,
+        "spacing-below": false,
+        "spacing-around-blocks": false,
+        "image-height": 5,
+        "darken-image": false,
+        "blocks_per_slide": 2,
+        "blocks_per_slide_mobile": "1",
+        "box-around-text": false,
+        "mobile-overlay": true,
+        "auto-rotate": true,
+        "rotate-frequency": 11,
+        "transition_type": "fade"
+      }
+    },
+    "brand_introduction": {
+      "type": "brand-introduction",
+      "settings": {
+        "title": "Gadget Mania - Innovazione e Tecnologia",
+        "text": "<p>Da anni siamo il punto di riferimento per chi cerca i gadget più innovativi e le ultime novità tecnologiche. La nostra passione per l'innovazione ci spinge a selezionare solo i prodotti migliori per offrirti un'esperienza di acquisto unica e soddisfacente.</p>",
+        "text_alignment": "center",
+        "button_text": "Scopri di più",
+        "button_url": "/pages/about",
+        "background_color": "#f8f8f8",
+        "title_color": "#333333",
+        "text_color": "#666666",
+        "button_bg_color": "#007bff",
+        "button_text_color": "#ffffff"
+      }
+    },
+    "16369683856c8403b6": {
+      "type": "featured-text",
+      "settings": {
+        "background-color": "accent",
+        "light-text": false,
+        "container-width": 2,
+        "spacing-above": true,
+        "spacing-below": true,
+        "overline": "Una storia unica di passione e stile inconfondibile",
+        "heading": "BOLDRINI SELLERIA DAL 1955",
+        "text": "<p>Design,ricerca, lavorazione a mano, pellami conciati al vegetale. La storia di un gusto classico rivisto in chiave moderna: una famiglia toscana fatta di amore, passione e dedizione per il proprio lavoro, che li ha portati ad essere un must have richiesto in tutto il mondo.</p>"
+      }
+    },
+    "615f942e-7758-4f0e-b879-c744072d4e50": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "novita",
+        "background-color": "none",
+        "spacing-above": true,
+        "spacing-below": true,
+        "featured-collection--image--show": false,
+        "featured-collection--description--show": true,
+        "display-type": "slider",
+        "products-per-row--desktop": "3",
+        "products-per-row--mobile": "1"
+      }
+    },
+    "grid-with-overlay": {
+      "type": "grid-with-overlay",
+      "blocks": {
+        "overlay-block-2": {
+          "type": "image",
+          "settings": {
+            "wide": false,
+            "tall": true,
+            "retain-ratio": false,
+            "title": "BORSE A TRACOLLA",
+            "link-url": "shopify://collections/borse-a-tracolla",
+            "link-text": ""
+          }
+        },
+        "overlay-block-3": {
+          "type": "image",
+          "settings": {
+            "wide": false,
+            "tall": true,
+            "retain-ratio": false,
+            "title": "BORSE A MANO",
+            "link-url": "shopify://collections/borse-a-mano",
+            "link-text": ""
+          }
+        },
+        "1ed79183-6f3b-48c0-a822-c776038bf7e6": {
+          "type": "image",
+          "settings": {
+            "wide": false,
+            "tall": true,
+            "retain-ratio": false,
+            "title": "BORSE SHOPPING",
+            "link-url": "shopify://collections/borse-shopping",
+            "link-text": ""
+          }
+        },
+        "9190ae8e-5f95-4f98-97ba-f35e9ecbcb32": {
+          "type": "image",
+          "settings": {
+            "wide": false,
+            "tall": true,
+            "retain-ratio": false,
+            "title": "ZAINI",
+            "link-url": "shopify://collections/zaini",
+            "link-text": ""
+          }
+        }
+      },
+      "block_order": [
+        "overlay-block-2",
+        "overlay-block-3",
+        "1ed79183-6f3b-48c0-a822-c776038bf7e6",
+        "9190ae8e-5f95-4f98-97ba-f35e9ecbcb32"
+      ],
+      "settings": {
+        "text-style": "light",
+        "background-color": "accent",
+        "spacing": true,
+        "mobile-overlay": true,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "width": 4,
+        "mobile-width": "1",
+        "heading": "",
+        "subtitle": "",
+        "link-url": "",
+        "link-text": ""
+      }
+    },
+    "featured_collection_43Yn49": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "collection": "best-seller",
+        "background-color": "none",
+        "spacing-above": true,
+        "spacing-below": false,
+        "featured-collection--image--show": false,
+        "featured-collection--description--show": true,
+        "display-type": "slider",
+        "products-per-row--desktop": "3",
+        "products-per-row--mobile": "1"
+      }
+    },
+    "custom_content_WmkWhL": {
+      "type": "custom-content",
+      "name": "Custom content",
+      "settings": {
+        "custom_html": "<style>\n  /* Contenitore principale flessibile: immagine + testo */\n  .bs-img-text {\n    display: flex;\n    flex-wrap: wrap;\n    align-items: center;\n    justify-content: center;\n    gap: 1,5rem;\n    margin: 1rem 0;\n    font-family: 'Futura', sans-serif;\n    color: #000;\n  }\n\n  /* Stili responsive per mobile */\n  @media (max-width: 768px) {\n    .bs-img-text {\n      flex-direction: column-reverse; /* immagine sotto il testo */\n    }\n\n    .bs-text {\n      text-align: center;\n    }\n  }\n\n  /* Immagine */\n  .bs-img-text img {\n    width: 100%;\n    height: auto;\n    border-radius: 8px;\n  }\n\n  .bs-img {\n    flex: 1 1 300px;\n  }\n\n  /* Blocco testo */\n  .bs-text {\n    flex: 1 1 300px;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n  }\n\n  /* Titolo */\n  .bs-text h2 {\n    font-size: 22px; /* Modifica qui la dimensione del titolo */\n    margin-bottom: 0.5rem;\n    font-weight: normal;\n  }\n\n  /* Paragrafo */\n  .bs-text p {\n    font-size: 14px; /* Modifica qui la dimensione del testo descrizione */\n    line-height: 1.6;\n    margin-bottom: 1.5rem;\n  }\n\n  /* Bottone testuale */\n  .bs-btn {\n    font-size: 12px; /* Modifica qui la dimensione del bottone */\n    font-weight: normal;\n    text-transform: uppercase;\n    text-decoration: underline;\n    color: #000;\n    background: none;\n    border: none;\n    padding: 0;\n    font-family: 'Futura', sans-serif;\n    cursor: pointer;\n    letter-spacing: 0.05em;\n  }\n\n  /* Hover del bottone */\n  .bs-btn:hover {\n    text-decoration: none;\n  }\n</style>\n\n<!-- Layout immagine + testo -->\n<div class=\"bs-img-text\">\n  <!-- Immagine -->\n  <div class=\"bs-img\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0605/4117/3974/files/Norma_Osso.jpg?v=1749203788\" alt=\"Borsa Opera Norma colore Osso\">\n  </div>\n\n  <!-- Testo + bottone -->\n  <div class=\"bs-text\">\n    <h2>La nostra <em>Opera</em> d’arte</h2>\n    <p>\n      Ispirata alla bellezza della scultura, la collezione <em>Opera</em> è la sintesi perfetta tra arte e moda.<br>\n      Le sue forme, scolpite come petali di pietra, raccontano una storia di eleganza e carattere.    \n      <br><br>\n      Una collezione pensata per chi cerca un accessorio che parli di sé, senza bisogno di parole.\n    </p>\n    <a href=\"https://boldriniselleria.com/collections/collezione-opera\" class=\"bs-btn\">SCOPRI LA COLLEZIONE</a>\n  </div>\n</div>"
+      }
+    },
+    "1636982822ff7e802e": {
+      "type": "slideshow",
+      "blocks": {
+        "163698282266c482c9-0": {
+          "type": "image",
+          "settings": {
+            "text-position": "bottom-left",
+            "text-width": "medium",
+            "overline": "",
+            "title": "LAVORAZIONE ARTIGIANALE",
+            "description": "<p><em>Tutta la lavorazione è realizzata dalle mani sapienti dei nostri maestri artigiani e seguita  in ogni suo dettaglio, a partire dall’oculata selezione del pellame, in tutte le fasi del processo produttivo, sino allo scrupoloso controllo dell’articolo finito.</em></p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "163698282266c482c9-1": {
+          "type": "image",
+          "settings": {
+            "text-position": "bottom-left",
+            "text-width": "medium",
+            "overline": "",
+            "title": "PELLE CONCIATA AL VEGETALE",
+            "description": "<p><em>Utilizziamo cuoio conciato al vegetale nelle vicine concerie toscane per realizzare un prodotto estremamente di </em>qualità<em>. Naturale e morbido, è il protagonista indiscusso delle nostre collezioni, della nostra azienda.</em></p>",
+            "link-url": "/",
+            "link-text": ""
+          }
+        },
+        "163698282266c482c9-2": {
+          "type": "image",
+          "settings": {
+            "text-position": "bottom-left",
+            "text-width": "medium",
+            "overline": "",
+            "title": "ECCELLENZA DEL MADE IN TUSCANY",
+            "description": "<p><em>Borse e accessori in cuoio di Alta Qualità prodotti interamente in Toscana. 100% Made in Tuscany, 100% Made in Italy,</em></p>",
+            "link-url": "/",
+            "link-text": ""
+          }
+        }
+      },
+      "block_order": [
+        "163698282266c482c9-0",
+        "163698282266c482c9-1",
+        "163698282266c482c9-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "text-color": "dark",
+        "background-color": "none",
+        "spacing-above": false,
+        "spacing-below": false,
+        "spacing-around-blocks": false,
+        "image-height": 1,
+        "darken-image": false,
+        "blocks_per_slide": 3,
+        "blocks_per_slide_mobile": "1",
+        "box-around-text": true,
+        "mobile-overlay": true,
+        "auto-rotate": true,
+        "rotate-frequency": 7,
+        "transition_type": "slide"
+      }
+    },
+    "featured_text_qMEtqx": {
+      "type": "featured-text",
+      "disabled": true,
+      "settings": {
+        "background-color": "accent",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": false,
+        "overline": "",
+        "heading": "L'arte dietro ogni borsa",
+        "text": "<p>In ogni cucitura c’è una storia, un gesto d’amore, una passione che si rinnova ogni giorno.</p><p>Guarda il video e scopri come vengono realizzate le nostre borse.</p>"
+      }
+    },
+    "custom_liquid_pjgmrK": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "Custom Liquid",
+      "settings": {
+        "custom-liquid": "<style>\n  .custom-fullscreen-video {\n    position: relative;\n    width: 100%;\n    height: 60vh;\n    overflow: hidden;\n  }\n\n  .custom-fullscreen-video iframe {\n    width: 100%;\n    height: 100%;\n    border: none;\n  }\n\n  @media screen and (max-width: 767px) {\n    .custom-fullscreen-video {\n      height: 50vh;\n    }\n\n    .custom-liquid--root {\n      padding-left: 0 !important;\n      padding-right: 0 !important;\n    }\n  }\n</style>\n\n<div class=\"custom-liquid--root\">\n  <div class=\"custom-liquid--wrapper\">\n    <div class=\"custom-fullscreen-video\">\n      <iframe\n        src=\"https://www.youtube.com/embed/fJsvjAjqvWc?controls=1&autoplay=0&mute=0&loop=0&rel=0&modestbranding=1\"\n        title=\"Video di presentazione\"\n        allow=\"accelerometer; encrypted-media; gyroscope; picture-in-picture\"\n        allowfullscreen>\n      </iframe>\n    </div>\n  </div>\n</div>",
+        "background-color": "accent",
+        "light-text": false,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true
+      }
+    },
+    "169f8ae5-f373-45b8-bc35-7ec241b2dc4a": {
+      "type": "featured-text",
+      "disabled": true,
+      "settings": {
+        "background-color": "dark",
+        "light-text": true,
+        "container-width": 4,
+        "spacing-above": true,
+        "spacing-below": true,
+        "overline": "",
+        "heading": "CYBER MONDAY",
+        "text": "<p>Sconto del -20% su tutti i prodotti</p>"
+      }
+    },
+    "1636983325aecb4d60": {
+      "type": "text-columns",
+      "blocks": {
+        "1636983325a41f89f8-1": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "title": "SCANDIANO BOLDRINI",
+            "description": "<p>Scandiano Boldrini, fondatore dell’azienda nel 1955. Mente creativa illuminata, mani sapienti e un forte amore e<br/>rispetto per l’artigianalità e la tradizione toscana della vacchetta conciata al vegetale.</p>",
+            "link-url": "shopify://pages/la-nostra-storia",
+            "link-text": ""
+          }
+        },
+        "1636983325a41f89f8-2": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "title": "LUCA BOLDRINI",
+            "description": "<p>Luca Boldrini, figlio di Scandiano e Presidente di “Boldrini Selleria”. Il padre gli ha tramandato tutti i segreti della lavorazione del cuoio e soprattutto il rispetto delle materie prime e delle persone che lavorano con lui. Gli piace definire la sua azienda “una famiglia artigianale”.</p>",
+            "link-url": "",
+            "link-text": ""
+          }
+        }
+      },
+      "block_order": [
+        "1636983325a41f89f8-1",
+        "1636983325a41f89f8-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "background-color": "accent",
+        "light-text": false,
+        "block-spacing": true,
+        "container-width": 1,
+        "spacing-above": true,
+        "spacing-below": true,
+        "width": 2,
+        "image-width": 0,
+        "mobile-width": "1",
+        "text-alignment": "center",
+        "heading": "LA NOSTRA STORIA",
+        "subtitle": "La storia di una famiglia toscana fatta di amore, passione e dedizione per il proprio lavoro, tramandato dal padre al figlio con un unico obiettivo: la ricerca dell’eccellenza,",
+        "link-url": "",
+        "link-text": ""
+      }
+    },
+    "text_columns_Jiic7t": {
+      "type": "text-columns",
+      "blocks": {
+        "image_bx4b6L": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "title": "Spedizione gratuita",
+            "description": "",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "image_wwdipN": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "title": "Consegna in tutto il mondo",
+            "description": "",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "image_aQD4nw": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "title": "100% Made in Italy",
+            "description": "",
+            "link-url": "",
+            "link-text": ""
+          }
+        },
+        "image_U9ekCX": {
+          "type": "image",
+          "settings": {
+            "show-image": true,
+            "title": "Pagamenti sicuri",
+            "description": "",
+            "link-url": "",
+            "link-text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_bx4b6L",
+        "image_wwdipN",
+        "image_aQD4nw",
+        "image_U9ekCX"
+      ],
+      "name": "Text columns with images",
+      "settings": {
+        "background-color": "accent",
+        "light-text": false,
+        "block-spacing": true,
+        "container-width": 2,
+        "spacing-above": true,
+        "spacing-below": true,
+        "width": 4,
+        "image-width": 20,
+        "mobile-width": "2",
+        "text-alignment": "center",
+        "heading": "",
+        "subtitle": "",
+        "link-url": "",
+        "link-text": ""
+      }
+    },
+    "featured-collection-slider": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "collection": "borse-a-mano",
+        "background-color": "light",
+        "spacing-above": true,
+        "spacing-below": true,
+        "featured-collection--image--show": true,
+        "featured-collection--description--show": true,
+        "display-type": "slider",
+        "products-per-row--desktop": "3",
+        "products-per-row--mobile": "2"
+      }
+    },
+    "1637013558717504ee": {
+      "type": "slideshow",
+      "blocks": {
+        "163701355868e9266f-0": {
+          "type": "image",
+          "settings": {
+            "text-position": "bottom-left",
+            "text-width": "medium",
+            "overline": "",
+            "title": "DOMANDE FREQUENTI",
+            "description": "",
+            "link-url": "shopify://pages/domande-frequenti",
+            "link-text": "TOGLITI OGNI DUBBIO"
+          }
+        },
+        "163701355868e9266f-1": {
+          "type": "image",
+          "settings": {
+            "text-position": "bottom-left",
+            "text-width": "medium",
+            "overline": "",
+            "title": "LA NOSTRA STORIA",
+            "description": "",
+            "link-url": "shopify://pages/valori",
+            "link-text": "UNA STORIA UNICA DI PASSIONE E STILE"
+          }
+        }
+      },
+      "block_order": [
+        "163701355868e9266f-0",
+        "163701355868e9266f-1"
+      ],
+      "settings": {
+        "text-color": "auto",
+        "background-color": "none",
+        "spacing-above": false,
+        "spacing-below": false,
+        "spacing-around-blocks": false,
+        "image-height": 2,
+        "darken-image": true,
+        "blocks_per_slide": 2,
+        "blocks_per_slide_mobile": "1",
+        "box-around-text": false,
+        "mobile-overlay": true,
+        "auto-rotate": false,
+        "rotate-frequency": 7,
+        "transition_type": "fade"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "custom_css": [],
+      "settings": {
+        "background-color": "none",
+        "light-text": false,
+        "spacing-above": true,
+        "spacing-below": true,
+        "heading": "NEWSLETTER BOLDRINI SELLERIA",
+        "newsletter--subheading": "<p>Iscriviti ora e ricevi un codice sconto del 10% valido su tutto il catalogo.</p>"
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_4aVDpy",
+    "slideshow",
+    "brand_introduction",
+    "16369683856c8403b6",
+    "615f942e-7758-4f0e-b879-c744072d4e50",
+    "grid-with-overlay",
+    "featured_collection_43Yn49",
+    "custom_content_WmkWhL",
+    "1636982822ff7e802e",
+    "featured_text_qMEtqx",
+    "custom_liquid_pjgmrK",
+    "169f8ae5-f373-45b8-bc35-7ec241b2dc4a",
+    "1636983325aecb4d60",
+    "text_columns_Jiic7t",
+    "featured-collection-slider",
+    "1637013558717504ee",
+    "newsletter"
+  ]
+}
